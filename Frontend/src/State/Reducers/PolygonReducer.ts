@@ -1,6 +1,5 @@
 import { ActionTypes } from "../Action-types";
 import { PolygonAction } from "../Actions";
-import { User } from "../Actions/UserActions";
 
 
 interface PolygonsState {

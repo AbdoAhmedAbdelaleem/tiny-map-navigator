@@ -1,5 +1,4 @@
 import { ActionTypes } from "../Action-types"
-import { GetPolygonDetails, GetPolygonNames } from "./PolygonActions"
 import { GetUsers } from "./UserActions"
 
 interface LoginAction {

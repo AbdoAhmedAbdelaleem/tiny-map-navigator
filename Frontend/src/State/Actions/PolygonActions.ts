@@ -20,7 +20,6 @@ export interface Point {
     y: number
 }
 
-
 export type PolygonAction =
   | { type: ActionTypes.GET_POLYGON_NAMES_REQUEST }
   | { type: ActionTypes.GET_POLYGON_NAMES_SUCCESS; payload: string[] }
