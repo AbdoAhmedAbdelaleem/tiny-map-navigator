@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 // now we have only UserStatus we clear it and reload 
 const LogOut = () => {
   useEffect(() => {
-    delete localStorage.USER_STATUS
-    window.location.reload();
+    localStorage.removeItem("USER_STATUS")
+    window.location.replace("/login");
+
   }, []);
 
   return null

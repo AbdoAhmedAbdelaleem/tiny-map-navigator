@@ -3,19 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actionCreators } from '../../State';
 import { bindActionCreators } from 'redux'
 import { State } from '../../State';
-import { useNavigate   } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 
 export const Users = () => {
   const dispatch = useDispatch();
   const { GetUsers } = bindActionCreators(actionCreators, dispatch);
   const { data } = useSelector((state: State) => state.Users);
-  
+
   useEffect(() => {
     // Use the useEffect hook to make the API call when the component mounts
-     GetUsers();
-  }, [dispatch]); // Empty dependency array ensures the effect runs only once on mount
+    GetUsers();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
     <div>
