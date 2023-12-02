@@ -23,12 +23,14 @@ jobs:
         
       - name: npm install, build, and test
         run: |
+          cd Frontend
           npm install
           npm run build:prod
           working-directory: Frontend
        
       - name: Build Backend       
         run: |
+          cd Backend
           npm install
           npm run build
           mv Frontend/build Backend/public
