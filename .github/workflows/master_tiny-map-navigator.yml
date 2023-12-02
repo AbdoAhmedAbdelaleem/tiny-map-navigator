@@ -26,7 +26,6 @@ jobs:
           cd Frontend
           npm install
           npm run build:prod
-          working-directory: Frontend
        
       - name: Build Backend       
         run: |
@@ -34,7 +33,6 @@ jobs:
           npm install
           npm run build
           mv Frontend/build Backend/public
-          working-directory: Backend 
         
 
       - name: Zip artifact for deployment
