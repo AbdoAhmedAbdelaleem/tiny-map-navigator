@@ -1,0 +1,37 @@
+# Ignore shared root-level files
+.idea/
+.DS_Store
+
+# Ignore any other root-level files specific to your project
+...
+
+# Ignore backend and frontend specific files
+Backend/.env
+Frontend/.env
+Frontend/.env.*
+
+
+# Ignore node_modules directory
+Backend/node_modules/
+Frontend/node_modules/
+
+# Ignore build artifacts backend
+Backend/build/
+Backend/dist/
+Backend/out/
+
+# Ignore build artifacts frontend
+Frontend/build/
+Frontend/dist/
+Frontend/out/
+
+# Ignore environment variables file
+.env
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db

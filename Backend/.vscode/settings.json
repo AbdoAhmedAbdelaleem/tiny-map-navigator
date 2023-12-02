@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/d9ed4934-f40f-41c5-8d83-bdc53f33c61c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/tiny-map-navigator",
+    "appService.deploySubpath": "."
+}
