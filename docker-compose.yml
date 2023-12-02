@@ -9,4 +9,4 @@ services:
     ports:
       - "8080:8080"  # Adjust port mapping if needed
     environment:
-      MONGO_URL: "mongodb+srv://abdo:abdoAhmed123456@cluster0.oznlyps.mongodb.net/SmallTasks"
+      MONGO_URL: 
