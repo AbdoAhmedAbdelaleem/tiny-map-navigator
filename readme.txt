@@ -69,4 +69,5 @@ Backend
 ## Docker 
 - we didn't pull to any container-hub but we shipped this product by Docker to run the docker make sure you adjusted the vaiables in the .env as described above
 then run docker-compose up
+provide MONGO_URL (MONGO DB URL) in docker-compose
  
