@@ -19,6 +19,7 @@ function App() {
         <Route path="/users" element={<PrivateRoute path="/users" renderComponent={UsersViewer} />} />
         <Route path="/home" element={<PrivateRoute path="/home" renderComponent={HomeViewer} />} />
         <Route path="/signout" element={<PrivateRoute path="/signout" renderComponent={SignoutViewer} />} />
+        <Route path="/" element={<PrivateRoute path="/map" renderComponent={MapViewer} />} />
         <Route path="*" element={<PrivateRoute path="*" renderComponent={NotFoundViewer} />} />
       </Routes>
     </Router>
