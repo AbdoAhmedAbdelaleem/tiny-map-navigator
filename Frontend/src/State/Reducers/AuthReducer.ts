@@ -8,8 +8,7 @@ interface LoginStatus {
   IsInvoked: boolean
 }
 
-// Retrieve state from localStorage
-
+// Retrieve state from localStorage as we need not to lost it so we save in Localstorage
 var initState: LoginStatus = JSON.parse(localStorage.getItem(consts.USER_STATUS) || '{}') || {
   Token: '',
   IsSuccess: false,
@@ -17,8 +16,8 @@ var initState: LoginStatus = JSON.parse(localStorage.getItem(consts.USER_STATUS)
 };
 
 const AuthReducer = (state: LoginStatus = initState, action: AuthAction): LoginStatus => {
-  let status = state;
-  switch (action.type) {
+  let status = state;debugger
+  switch (action.type) { 
     case ActionTypes.LoginSuccess:
       let successStatus = {
         ...state,
@@ -26,6 +25,7 @@ const AuthReducer = (state: LoginStatus = initState, action: AuthAction): LoginS
         IsSuccess: true,
         Token: action.payload + ""
       }
+      // Save token To help in Authentications
       localStorage.setItem(consts.USER_STATUS, JSON.stringify(successStatus));
       return successStatus;
     case ActionTypes.LoginFailed:
@@ -37,7 +37,7 @@ const AuthReducer = (state: LoginStatus = initState, action: AuthAction): LoginS
       }
       delete localStorage[consts.USER_STATUS];
       return failStatus
-    case ActionTypes.SIGN_OUT: 
+    case ActionTypes.SIGN_OUT:
       delete localStorage[consts.USER_STATUS];
   }
   return status;

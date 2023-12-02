@@ -1,7 +1,6 @@
 import { Dispatch } from "redux"
 import { ActionTypes } from "../Action-types"
 import { AuthAction } from "../Actions"
-import axios from 'axios';
 import Api from '../../Services/ApiService'
 
 const apiPath = 'Auth'
