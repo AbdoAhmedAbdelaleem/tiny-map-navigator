@@ -28,6 +28,9 @@ export type PolygonAction =
   | { type: ActionTypes.GET_POLYGON_NAMES_FAILURE; payload: string }
   | { type: ActionTypes.GET_POLYGON_DETAILS_REQUEST }
   | { type: ActionTypes.GET_POLYGON_DETAILS_SUCCESS; payload: any }
-  | { type: ActionTypes.GET_POLYGON_DETAILS_FAILURE; payload: string };
+  | { type: ActionTypes.GET_POLYGON_DETAILS_FAILURE; payload: string }
+  | { type: ActionTypes.SEARCH_POLYGON_REQUEST; payload: string }
+  | { type: ActionTypes.SEARCH_POLYGON_SUCCESS; payload: string }
+  | { type: ActionTypes.SEARCH_POLYGON_FAILURE; payload: string };
 
 export type UsersAction = GetUsers;

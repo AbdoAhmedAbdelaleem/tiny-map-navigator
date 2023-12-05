@@ -16,7 +16,7 @@ var initState: LoginStatus = JSON.parse(localStorage.getItem(consts.USER_STATUS)
 };
 
 const AuthReducer = (state: LoginStatus = initState, action: AuthAction): LoginStatus => {
-  let status = state;debugger
+  let status = state;
   switch (action.type) { 
     case ActionTypes.LoginSuccess:
       let successStatus = {

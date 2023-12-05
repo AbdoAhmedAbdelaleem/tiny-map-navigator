@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddPolygon = exports.getPolygonDetails = exports.getAllPolygons = void 0;
+exports.FindPolygonsByPoints = exports.AddPolygon = exports.getPolygonDetails = exports.getAllPolygons = void 0;
 const polygons_1 = require("../db/polygons");
 const logKey = 'Polygon Controller: ';
 //Get All Polygon titles, then map it to just array[string]
@@ -48,4 +48,22 @@ const AddPolygon = async (req, res) => {
     }
 };
 exports.AddPolygon = AddPolygon;
+// Controller method to find polygons by points
+const FindPolygonsByPoints = async (req, res) => {
+    try {
+        // Assuming the request body contains an array of points in the format { type, coordinates }
+        const points = req.body.points;
+        if (!points || !Array.isArray(points) || points.length === 0) {
+            return res.status(400).json({ error: 'Invalid or missing points in the request body' });
+        }
+        // Call the function to find polygons containing the specified points
+        const polygons = await (0, polygons_1.findPolygonsContainingPoints)(points);
+        return res.status(200).json(polygons);
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: error });
+    }
+};
+exports.FindPolygonsByPoints = FindPolygonsByPoints;
 //# sourceMappingURL=polygon.js.map

@@ -54,3 +54,13 @@
 .map-style-active{
   background-color: olive;
 }
+
+.search-polygons {
+  position:  absolute;
+  margin-left: 20px; 
+  margin-top: 40px;
+}
+
+.search-polygons input {
+  width: 550px;
+}

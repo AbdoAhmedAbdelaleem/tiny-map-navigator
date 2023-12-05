@@ -11,6 +11,11 @@ interface PolygonsState {
   loadingDetails: boolean;
   successDetails: boolean;
   errorDetails: string | null;
+
+  loadingSearch: boolean;
+  successSearch: boolean,
+  errorSearch: string | null;
+  searchPolygonsResult: any
 }
 
 const initialState: PolygonsState = {
@@ -21,7 +26,11 @@ const initialState: PolygonsState = {
   successDetails: false,
   errorNames: '',
   errorDetails: '',
-  selectedPolygon: null
+  selectedPolygon: null,
+  searchPolygonsResult: null,
+  errorSearch: '',
+  successSearch: false,
+  loadingSearch: false
 };
 
 
@@ -59,6 +68,8 @@ const PolygonsReducer = (state = initialState, action: PolygonAction): PolygonsS
     case ActionTypes.GET_POLYGON_DETAILS_SUCCESS:
       return {
         ...state,
+        // Null Search as current action is select polygon so we need to display data fro selection
+        searchPolygonsResult: null,   
         loadingDetails: false,
         successDetails: true,
         errorDetails: null,
@@ -70,6 +81,30 @@ const PolygonsReducer = (state = initialState, action: PolygonAction): PolygonsS
         loadingDetails: false,
         successDetails: false,
         errorDetails: action.payload as string,
+      };
+    case ActionTypes.SEARCH_POLYGON_REQUEST:
+      return {
+        ...state,
+        loadingSearch: true,
+        successSearch: false,
+        errorSearch: null,
+      };
+    case ActionTypes.SEARCH_POLYGON_SUCCESS:
+      return {
+        ...state,
+        // Null SelectedPolygon as current action is Search polygon so we need to display data from selection
+        selectedPolygon: null,
+        loadingSearch: false,
+        successSearch: true,
+        errorSearch: null,
+        searchPolygonsResult: action.payload,
+      };
+    case ActionTypes.SEARCH_POLYGON_FAILURE:
+      return {
+        ...state,
+        loadingSearch: false,
+        successSearch: false,
+        errorSearch: action.payload as string,
       };
     default:
       return state;

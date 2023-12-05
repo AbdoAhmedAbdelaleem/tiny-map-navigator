@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPolygonByName, getPolygonNames, createPolygon } from '../db/polygons'
+import { getPolygonByName, getPolygonNames, createPolygon, findPolygonsContainingPoints } from '../db/polygons'
 
 const logKey = 'Polygon Controller: ';
 
@@ -43,3 +43,23 @@ export const AddPolygon = async (req: express.Request, res: express.Response) =>
       return res.sendStatus(400);
     }
   };
+
+  // Controller method to find polygons by points
+export const FindPolygonsByPoints = async (req: express.Request, res: express.Response) => {
+  try {
+    // Assuming the request body contains an array of points in the format { type, coordinates }
+    const points = req.body.points;
+
+    if (!points || !Array.isArray(points) || points.length === 0) {
+      return res.status(400).json({ error: 'Invalid or missing points in the request body' });
+    }
+
+    // Call the function to find polygons containing the specified points
+    const polygons = await findPolygonsContainingPoints(points);
+
+    return res.status(200).json(polygons);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: error });
+  }
+};

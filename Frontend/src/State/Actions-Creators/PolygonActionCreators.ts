@@ -32,6 +32,20 @@ export const getPolygonDetailsFailure = (error: string) => ({
   payload: error,
 });
 
+export const searchPolygonsRequest = () => ({
+  type: ActionTypes.SEARCH_POLYGON_REQUEST,
+});
+
+export const searchPolygonSuccess = (data: any) => ({
+  type: ActionTypes.SEARCH_POLYGON_SUCCESS,
+  payload: data,
+});
+
+export const searchPolygonFailure = (error: string) => ({
+  type: ActionTypes.SEARCH_POLYGON_FAILURE,
+  payload: error,
+});
+
 export const GetPolygonNamesHandler = () => async (dispatch: Dispatch) => {
   dispatch(getPolygonNamesRequest());
   try {
@@ -49,5 +63,15 @@ export const GetPolygonDetailsHandler = (polygonName: string) => async (dispatch
     dispatch(getPolygonDetailsSuccess(response.data));
   } catch (error: any) {
     dispatch(getPolygonDetailsFailure(error.message));
+  }
+};
+
+export const SearchPolygonsHandler = (coords: [[number, number]]) => async (dispatch: Dispatch) => {
+  dispatch(searchPolygonsRequest());
+  try {
+    const response = await Api.post(`${apiPath}/find`, coords);
+    dispatch(searchPolygonSuccess(response.data));
+  } catch (error: any) {
+    dispatch(searchPolygonFailure(error.message));
   }
 };
